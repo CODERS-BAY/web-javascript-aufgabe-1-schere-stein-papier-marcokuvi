@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Scissor Paper</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap');
+
+    html {
+        box-sizing: border-box;
+    }
+
+    *,
+    *:before,
+    *:after {
+        box-sizing: inherit;
+    }
+
+    body {
+        font-family: 'Oswald', sans-serif;
+    }
+
+    .container button.mystyle {
+        background-color: rgb(192, 4, 145);
+        color: white !important;
+    }
+
+    .container button.bluestyle {
+        background-color: rgb(23, 144, 180);
+        color: white !important;
+    }
+
+    h1{
+        font-weight: bold;
+    }
+</style>
+
+<body>
+
+    <header class="jumbotron text-center" style="background-color: rgb(192, 4, 4); color: white;">
+        <h1 style="font-size: 60px; text-transform: uppercase;">Rock Paper Scissor Game</h1>
+        <p style="font-size: 15px;">A game from Marco Kuvi</p>
+    </header>
+
+    <main class="container">
+
+        <h1>First to five wins!</h1>
+
+        <section class="d-inline-flex" style="margin-top: 20px;">
+
+
+            <div id="carouselExampleControls" class="carousel slide" data-interval="false" style="width: 400px;">
+                <div class="container">
+                    <p id="your-choice" style="font-weight: bold; font-size: 25px;">Your Choice: </p>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block" src="pics/rock.jpeg" id="rock"
+                            style="width: 400px; height: 400px; filter: hue-rotate(160deg);" onclick="rockChoice()">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block" src="pics/scissor.jpeg" id="scissor"
+                            style="width: 400px; height: 400px; filter: hue-rotate(160deg);" onclick="scissorChoice()">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block" src="pics/paper.jpeg" id="paper"
+                            style="width: 400px; height: 400px; filter: hue-rotate(160deg);" onclick="paperChoice()">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+            <div id="carouselExampleControls-2" class="carousel slide" data-interval="false"
+                style="width: 400px; margin-left: 75px;">
+                <div class="container">
+                    <p id="computer-choice" style="font-weight: bold; font-size: 25px;">Computer Choice: </p>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block" src="pics/rock.jpeg" id="rock-computer"
+                            style="width: 400px; height: 400px; filter: hue-rotate(160deg);">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block" src="pics/scissor.jpeg" id="scissor-computer"
+                            style="width: 400px; height: 400px; filter: hue-rotate(160deg);">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block" src="pics/paper.jpeg" id="paper-computer"
+                            style="width: 400px; height: 400px; filter: hue-rotate(160deg);">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <div class="container" style="margin-top: 20px;">
+            <button id="start-button" class="btn btn-danger" style="margin-top: 20px; display: none;"
+                onclick="generateComputerChoice()">Start</button>
+            <p id="winner" style="font-weight: bold; font-size: 25px;">Round winner : </p>
+            <p id="rounds">Round :</p>
+            <p id="wins-you">Your wins :</p>
+            <p id="wins-computer">Computer wins :</p>
+            <p id="overall-winner" style="font-weight: bold; font-size: 35px;">Match Winner : </p>
+            <button class="btn btn-danger" onclick="reload()">Start New Game</button>
+        </div>
+
+
+
+    </main>
+
+    <div class="jumbotron text-center"
+        style="position: relative; bottom: 0; margin-bottom: 0; margin-top: 25px; width: 100%; background-color: rgb(192, 4, 4);">
+        <p style="font-size: 60px; color: white;">Good Luck!</p>
+    </div>
+
+</body>
+
+<script>
+
+    class Choice {
+        constructor(myChoice) {
+            this.myChoice = myChoice;
+        }
+    }
+
+    function rockChoice() {
+        document.getElementById('your-choice').innerHTML = "Your Choice: ROCK";
+        document.getElementById('start-button').style.display = "inline"
+        return this.myChoice = 1;
+    }
+
+    function scissorChoice() {
+        document.getElementById('start-button').style.display = "inline"
+        document.getElementById('your-choice').innerHTML = "Your Choice: SCISSOR";
+        return this.myChoice = 2;
+    }
+
+    function paperChoice() {
+        document.getElementById('start-button').style.display = "inline"
+        document.getElementById('your-choice').innerHTML = "Your Choice: PAPER";
+        return this.myChoice = 3;
+    }
+
+    var rounds = 0;
+    var yourWins = 0;
+    var computerWins = 0;
+
+    function generateComputerChoice() {
+
+        rounds++;
+        document.getElementById('rounds').innerHTML = "Round: " + rounds;
+
+        var randomNumber = Math.floor(Math.random() * 3);
+
+        if (randomNumber === 0) {
+            document.getElementById('computer-choice').innerHTML = "The computer Choice is: ROCK";
+            $("#carouselExampleControls-2").carousel(0);
+        } else if (randomNumber === 1) {
+            document.getElementById('computer-choice').innerHTML = "The computer Choice is: SCISSOR";
+            $("#carouselExampleControls-2").carousel(1);
+        } else {
+            document.getElementById('computer-choice').innerHTML = "The computer Choice is: PAPER";
+            $("#carouselExampleControls-2").carousel(2);
+        }
+
+        var winner = document.getElementById('winner');
+
+
+        if (this.myChoice === 1) {
+            if (randomNumber === 0) {
+                winner.innerHTML = "The Winner is: TIE";
+            } else if (randomNumber === 1) {
+                winner.innerHTML = "The Winner is: YOU";
+                yourWins++;
+            } else {
+                winner.innerHTML = "The Winner is: COMPUTER";
+                computerWins++;
+            }
+        }
+
+        if (this.myChoice === 2) {
+            if (randomNumber === 0) {
+                winner.innerHTML = "The Winner is: COMPUTER";
+                computerWins++;
+            } else if (randomNumber === 1) {
+                winner.innerHTML = "The Winner is: TIE";
+            } else {
+                winner.innerHTML = "The Winner is: YOU";
+                yourWins++;
+            }
+        }
+
+        if (this.myChoice === 3) {
+            if (randomNumber === 0) {
+                winner.innerHTML = "The Winner is: YOU";
+                yourWins++;
+            } else if (randomNumber === 1) {
+                winner.innerHTML = "The Winner is: COMPUTER";
+                computerWins++;
+            } else {
+                winner.innerHTML = "The Winner is: TIE";
+            }
+        }
+        document.getElementById('wins-you').innerHTML = "Your wins: " + yourWins;
+        document.getElementById('wins-computer').innerHTML = "Computer wins: " + computerWins;
+
+        if(computerWins === 5) {
+            alert("Game Over");
+            document.getElementById('start-button').style.display = "none";
+            document.getElementById('overall-winner').innerHTML = "Match winner: COMPUTER"
+        } else if (yourWins === 5) {
+            alert("You Won");
+            document.getElementById('start-button').style.display = "none";
+            document.getElementById('overall-winner').innerHTML = "Match winner: YOU"
+        }
+    }
+
+    function reload() {
+        location.reload();
+    }
+
+</script>
+
+</html>
